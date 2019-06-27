@@ -7,6 +7,7 @@
 //
 
 #import "NBLViewController.h"
+#import <NBLTreeNode/NBLTreeNode.h>
 
 @interface NBLViewController ()
 

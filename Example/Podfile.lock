@@ -1,0 +1,16 @@
+PODS:
+  - NBLTreeNode (0.1.0)
+
+DEPENDENCIES:
+  - NBLTreeNode (from `../`)
+
+EXTERNAL SOURCES:
+  NBLTreeNode:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NBLTreeNode: f85e47161bc092dc2a110f60bc05c3d4da216de1
+
+PODFILE CHECKSUM: f19e850d45201e2d2663dac6f3b41afe01f47518
+
+COCOAPODS: 1.6.1

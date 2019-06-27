@@ -40,9 +40,9 @@
 		1330ABF51193267C75655E9C /* Pods_NBLTreeNode_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBLTreeNode_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E2A99C56647E2C64D37D5F2 /* Pods-NBLTreeNode_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NBLTreeNode_Example.debug.xcconfig"; path = "Target Support Files/Pods-NBLTreeNode_Example/Pods-NBLTreeNode_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		41D8515F25D417D83FED13AC /* Pods_NBLTreeNode_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NBLTreeNode_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		48EF7DDE60C32B5D2346A8F1 /* NBLTreeNode.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = NBLTreeNode.podspec; path = ../NBLTreeNode.podspec; sourceTree = "<group>"; };
-		49D703187B3AC0989018615D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		4C809FF23F6BB1E9691E5250 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		48EF7DDE60C32B5D2346A8F1 /* NBLTreeNode.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NBLTreeNode.podspec; path = ../NBLTreeNode.podspec; sourceTree = "<group>"; };
+		49D703187B3AC0989018615D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		4C809FF23F6BB1E9691E5250 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* NBLTreeNode_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NBLTreeNode_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -193,7 +193,6 @@
 				E91B1B75111B56507676D5BD /* Pods-NBLTreeNode_Tests.debug.xcconfig */,
 				BCC0DB2C84EF034DBA87F81D /* Pods-NBLTreeNode_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -248,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "杨建红";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = NZBNK9L6AA;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -258,6 +260,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -498,9 +501,11 @@
 			baseConfigurationReference = 2E2A99C56647E2C64D37D5F2 /* Pods-NBLTreeNode_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NZBNK9L6AA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NBLTreeNode/NBLTreeNode-Prefix.pch";
 				INFOPLIST_FILE = "NBLTreeNode/NBLTreeNode-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,9 +518,11 @@
 			baseConfigurationReference = F96069ECAC474B2D7296A18B /* Pods-NBLTreeNode_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NZBNK9L6AA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NBLTreeNode/NBLTreeNode-Prefix.pch";
 				INFOPLIST_FILE = "NBLTreeNode/NBLTreeNode-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
