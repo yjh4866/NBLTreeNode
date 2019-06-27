@@ -16,16 +16,16 @@ NS_ASSUME_NONNULL_BEGIN
 // 父结点
 @property (readonly, weak) NBLTreeNode *parentNode;
 // 子结点
-@property (nonatomic, readonly) NSArray<NBLTreeNode *> *childNodes;
+@property (readonly, strong) NSArray<NBLTreeNode *> *childNodes;
 // 是否为叶子结点
 @property (getter=isLeaf, readonly) BOOL isLeaf;
 
 // 结点数据
-@property (readonly, strong) id representedObject;
+@property (readonly, strong) NSObject<NSCoding> *representedObject;
 
 // 实例化方法
-+ (instancetype)treeNodeWithRepresentedObject:(id)modelObject;
-- (instancetype)initWithRepresentedObject:(id)modelObject;
++ (instancetype)treeNodeWithRepresentedObject:(NSObject<NSCoding> *)modelObject;
+- (instancetype)initWithRepresentedObject:(NSObject<NSCoding> *)modelObject;
 
 // 添加子结点
 - (void)addChildNode:(NBLTreeNode *)childNode;

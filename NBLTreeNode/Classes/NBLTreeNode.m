@@ -7,13 +7,6 @@
 
 #import "NBLTreeNode.h"
 
-@interface NBLTreeNode ()
-// 子结点
-@property (nonatomic, strong) NSArray<NBLTreeNode *> *childNodes;
-// 结点数据
-@property (strong) id representedObject;
-@end
-
 @implementation NBLTreeNode
 
 
@@ -22,6 +15,9 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.title?:@"" forKey:@"title"];
+    if (self.representedObject) {
+        [aCoder encodeObject:self.representedObject forKey:@"representedObject"];
+    }
     [aCoder encodeObject:self.childNodes?:@[] forKey:@"childNodes"];
 }
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -29,7 +25,8 @@
     self = [super init];
     if (self) {
         self.title = [aDecoder decodeObjectForKey:@"title"];
-        self.childNodes = [aDecoder decodeObjectForKey:@"childNodes"];
+        _representedObject = [aDecoder decodeObjectForKey:@"representedObject"];
+        _childNodes = [aDecoder decodeObjectForKey:@"childNodes"];
     }
     return self;
 }
@@ -43,15 +40,15 @@
 }
 
 // 实例化方法
-+ (instancetype)treeNodeWithRepresentedObject:(id)modelObject
++ (instancetype)treeNodeWithRepresentedObject:(NSObject<NSCoding> *)modelObject
 {
     return [[NBLTreeNode alloc] initWithRepresentedObject:modelObject];
 }
-- (instancetype)initWithRepresentedObject:(id)modelObject
+- (instancetype)initWithRepresentedObject:(NSObject<NSCoding> *)modelObject
 {
     self = [super init];
     if (self) {
-        self.representedObject = modelObject;
+        _representedObject = modelObject;
     }
     return self;
 }
@@ -59,12 +56,16 @@
 // 添加子结点
 - (void)addChildNode:(NBLTreeNode *)childNode
 {
-    self.childNodes = [self.childNodes?:@[] arrayByAddingObject:childNode];
+    childNode->_parentNode = self;
+    _childNodes = [self.childNodes?:@[] arrayByAddingObject:childNode];
 }
 // 添加子结点
 - (void)addChildNodes:(NSArray<NBLTreeNode *> *)childNodes
 {
-    self.childNodes = [self.childNodes?:@[] arrayByAddingObjectsFromArray:childNodes];
+    for (NBLTreeNode *node in childNodes) {
+        node->_parentNode = self;
+    }
+    _childNodes = [self.childNodes?:@[] arrayByAddingObjectsFromArray:childNodes];
 }
 // 移除子结点
 - (void)removeChildNode:(NBLTreeNode *)childNode
@@ -72,7 +73,7 @@
     if (self.childNodes.count > 0) {
         NSMutableArray *marray = [NSMutableArray arrayWithArray:self.childNodes];
         [marray removeObject:childNode];
-        self.childNodes = marray;
+        _childNodes = marray;
     }
 }
 // 移除子结点
@@ -81,14 +82,14 @@
     if (self.childNodes.count > 0) {
         NSMutableArray *marray = [NSMutableArray arrayWithArray:self.childNodes];
         [marray removeObjectsInArray:childNodes];
-        self.childNodes = marray;
+        _childNodes = marray;
     }
 }
 
 // 重置子结点
 - (void)resetChildNodes:(NSArray<NBLTreeNode *> *)childNodes
 {
-    self.childNodes = [NSArray arrayWithArray:childNodes];
+    _childNodes = [NSArray arrayWithArray:childNodes];
 }
 
 // 遍历
